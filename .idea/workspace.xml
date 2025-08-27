@@ -5,64 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed51c975-ed01-4511-86c0-d5b9cee237d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SignIn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SignUp.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/supabase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/(tabs)/_layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/(tabs)/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/(tabs)/settings.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/_layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/modal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(public)/_layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(public)/sign-in.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(public)/sign-up.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(public)/welcome.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/adaptive-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon-dark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/splash-dark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/splash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/image.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/safe-area-view.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/form.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/input.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/label.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/radio-group.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/switch.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/text.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/textarea.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/typography.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/supabase.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/colors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/context/supabase-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/application-overview.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/components-and-styling.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/project-configuration.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/project-structure.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/state-management.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/useColorScheme.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nativewind-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nativewind-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate-colors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/supabase.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/supabase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +26,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/flemingvincent/expo-supabase-starter.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/jasir3124/BrokeBites.git&quot;,
     &quot;accountId&quot;: &quot;8e26c7d6-e6ec-4389-bde5-94d63b4f2759&quot;
   }
 }</component>
@@ -105,7 +51,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Admin\\Documents\\programming\\projekete\\projects\\BrokeBites\\node_modules\\prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Documents\\programming\\projekete\\projects\\BrokeBites\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Documents\\programming\\projekete\\projects\\LiftEats\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -129,7 +75,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756050686994</updated>
-      <workItem from="1756050688322" duration="17797000" />
+      <workItem from="1756050688322" duration="18209000" />
+      <workItem from="1756290900834" duration="1192000" />
+      <workItem from="1756292537762" duration="650000" />
+      <workItem from="1756316818049" duration="516000" />
     </task>
     <servers />
   </component>

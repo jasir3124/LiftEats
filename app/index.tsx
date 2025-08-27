@@ -2,7 +2,39 @@ import { View, Image, TouchableOpacity, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 
+import { supabase } from "../lib/supabase"; // adjust path
+import * as WebBrowser from "expo-web-browser";
+import * as Linking from 'expo-linking'
+
+
 export default function Index() {
+
+	const signInWithGoogle = async () => {
+		try {
+			const redirectUrl = Linking.createURL('/')
+
+			const { data, error } = await supabase.auth.signInWithOAuth({
+				provider: "google",
+				options: {
+					redirectTo: redirectUrl, // Expo dev URL; for production use your app scheme
+				},
+			});
+
+			if (error) {
+				console.error("Error signing in:", error.message);
+			} else {
+				// This URL opens the OAuth page
+				if (data.url) {
+					WebBrowser.openBrowserAsync(data.url);
+				}
+			}
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
+
+
 	return (
 		<View className="flex-1 relative">
 			{/* Top Image */}
@@ -45,7 +77,10 @@ export default function Index() {
 				</View>
 
 				<View className="flex-col gap-7 w-2/3 z-10">
-					<TouchableOpacity className="bg-white h-12 flex-row items-center justify-center rounded-md shadow">
+					<TouchableOpacity
+						className="bg-white h-12 flex-row items-center justify-center rounded-md shadow"
+						onPress={signInWithGoogle}
+					>
 						<Text className="text-black font-semibold text-base ml-2">
 							Sign in with Google
 						</Text>

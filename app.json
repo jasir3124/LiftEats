@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "BrokeBites",
-    "slug": "BrokeBites",
+    "name": "LiftEats",
+    "slug": "lifteats",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "brokebites",
+    "scheme": "LiftEats",
+    "platforms": ["ios", "android", "web"],
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -16,7 +17,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.jasir3124.LiftEats"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +39,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "022ff9d5-1639-498a-a9fa-67cc302ead9b"
+      }
+    },
+    "owner": "jasirlimani"
   }
 }
