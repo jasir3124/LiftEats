@@ -1,102 +1,106 @@
-import { View, Image, TouchableOpacity, Text } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Link } from "expo-router";
-
-import { supabase } from "../lib/supabase"; // adjust path
+import { useRouter } from "expo-router";
 import * as WebBrowser from "expo-web-browser";
-import * as Linking from 'expo-linking'
+import * as AuthSession from "expo-auth-session";
+import { supabase } from "../lib/supabase";
 
+WebBrowser.maybeCompleteAuthSession();
 
 export default function Index() {
+    const router = useRouter();
 
-	const signInWithGoogle = async () => {
-		try {
-			const redirectUrl = Linking.createURL('/')
+    async function signInWithGoogle() {
+        const redirectUrl = AuthSession.makeRedirectUri({ useProxy: true });
 
-			const { data, error } = await supabase.auth.signInWithOAuth({
-				provider: "google",
-				options: {
-					redirectTo: redirectUrl, // Expo dev URL; for production use your app scheme
-				},
-			});
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: { redirectTo: redirectUrl },
+        });
 
-			if (error) {
-				console.error("Error signing in:", error.message);
-			} else {
-				// This URL opens the OAuth page
-				if (data.url) {
-					WebBrowser.openBrowserAsync(data.url);
-				}
-			}
-		} catch (err) {
-			console.error(err);
-		}
-	};
+        if (error) {
+            console.error("Google sign in error:", error.message);
+            return;
+        }
 
+        if (data?.url) {
+            const result = await WebBrowser.openAuthSessionAsync(
+                data.url,
+                redirectUrl
+            );
 
+            if (result.type === "success" && result.url) {
+                const url = new URL(result.url);
+                const hash = url.hash.substring(1);
+                const params = new URLSearchParams(hash);
 
-	return (
-		<View className="flex-1 relative">
-			{/* Top Image */}
-			<View className="flex-[5]">
-				<Image
-					source={require("../assets/images/food-board-onboard-page-2.jpg")}
-					className="w-full h-full"
-					resizeMode="cover"
-				/>
-			</View>
+                const access_token = params.get("access_token");
+                const refresh_token = params.get("refresh_token");
 
-			{/* Bottom Green Section */}
-			<View className="flex-[5] bg-brandGreen items-center pt-10 relative">
-				{/* Fake shadow with gradient */}
-				<LinearGradient
-					colors={["#93c572", "transparent"]}
-					start={{ x: 0, y: 1 }} // bottom
-					end={{ x: 0, y: 0 }}   // top
-					style={{
-						position: "absolute",
-						top: -300,
-						left: 0,
-						right: 0,
-						height: 300,
-					}}
-				/>
+                if (access_token && refresh_token) {
+                    const { data: sessionData, error: sessionError } =
+                        await supabase.auth.setSession({
+                            access_token,
+                            refresh_token,
+                        });
 
-				<Link href={"/SignUp"} asChild={true}>
-					<TouchableOpacity className="bg-black w-2/3 h-12 items-center justify-center rounded-md z-10 mb-4">
-						<Text className="text-white font-bold text-xl">Sign Up With Email</Text>
-					</TouchableOpacity>
-				</Link>
+                    if (sessionError) {
+                        console.error("Session error:", sessionError.message);
+                        return;
+                    }
 
-				<View className="flex-row items-center justify-center mt-5 mb-10 w-full z-10">
-					<View className="w-20 h-0.5 bg-gray-300" />
-					<Text className="mx-3 text-gray-300 font-semibold text-lg">
-						or use social sign up
-					</Text>
-					<View className="w-20 h-0.5 bg-gray-300" />
-				</View>
+                    console.log("✅ Logged in!", sessionData.session?.user.email);
+                    router.push("/home");
+                }
+            }
+        }
+    }
 
-				<View className="flex-col gap-7 w-2/3 z-10">
-					<TouchableOpacity
-						className="bg-white h-12 flex-row items-center justify-center rounded-md shadow"
-						onPress={signInWithGoogle}
-					>
-						<Text className="text-black font-semibold text-base ml-2">
-							Sign in with Google
-						</Text>
-					</TouchableOpacity>
+    return (
+        <View className="flex-1 flex-col">
+            <View className="h-[50%] relative">
+                <Image
+                    source={require("../assets/images/food-board-onboard-page-2.jpg")}
+                    className="w-full h-full"
+                    resizeMode="cover"
+                />
+                <LinearGradient
+                    colors={["transparent", "#93c572"]}
+                    style={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: 300,
+                    }}
+                />
+            </View>
 
-					<TouchableOpacity className="bg-blue-600 h-12 flex-row items-center justify-center rounded-md shadow">
-						<Text className="text-white font-semibold text-base ml-2">
-							Sign in with Facebook
-						</Text>
-					</TouchableOpacity>
+            <View className="h-[50%] bg-greenSoft items-center justify-center p-4 pt-10">
+                <TouchableOpacity
+                    className="bg-black p-4 rounded-xl w-[90%] items-center"
+                    onPress={() => router.push("/SignUp")}
+                >
+                    <Text className="text-white text-2xl font-semibold">
+                        Sign up with email
+                    </Text>
+                </TouchableOpacity>
 
-					<Text className={"text-white text-center text-lg"}>Already have an account? <Link href="/SignIn"
-						className="font-semibold underline">Sign In</Link></Text>
-				</View>
+                <View className="flex-row items-center justify-center w-full my-10">
+                    <View className="w-20 h-[1px] bg-white" />
+                    <Text className="mx-4 text-xl text-white">or use social sign up</Text>
+                    <View className="w-20 h-[1px] bg-white" />
+                </View>
 
-			</View>
-		</View>
-	);
+                <TouchableOpacity
+                    className="bg-white p-4 rounded-xl w-[90%] items-center"
+                    onPress={signInWithGoogle}
+                >
+                    <Text className="text-black text-2xl font-semibold">
+                        Continue with Google
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
 }

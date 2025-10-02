@@ -3,6 +3,8 @@
 # dependencies
 node_modules/
 
+.env
+
 # Expo
 .expo/
 dist/
@@ -38,6 +40,6 @@ yarn-error.*
 
 app-example
 
-expo-env.d.ts
-
-.env
+# generated native folders
+/ios
+/android
