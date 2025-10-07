@@ -93,11 +93,17 @@ export default function Index() {
                 </View>
 
                 <TouchableOpacity
-                    className="bg-white p-4 rounded-xl w-[90%] items-center"
+                    className="bg-white p-4 mb-20 rounded-xl w-[90%] items-center"
                     onPress={signInWithGoogle}
                 >
                     <Text className="text-black text-2xl font-semibold">
                         Continue with Google
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => router.push("/SignIn")}>
+                    <Text className="text-white">
+                        Already have an account? <Text className="text-yellowAccent">Sign In</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
