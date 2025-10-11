@@ -58,7 +58,6 @@ export default function SignInForm() {
                 <Text className="text-red-500 text-center mb-2 text-lg">{formError}</Text>
             )}
 
-            {/* Email Field */}
             <Controller
                 control={control}
                 name="email"
@@ -85,7 +84,6 @@ export default function SignInForm() {
                 )}
             />
 
-            {/* Password Field */}
             <Controller
                 control={control}
                 name="password"
@@ -119,15 +117,21 @@ export default function SignInForm() {
                 )}
             />
 
-            {/* Submit Button */}
             <TouchableOpacity
                 onPress={handleSubmit(onSubmit)}
                 disabled={isSubmitting}
-                className="bg-tealAccent py-3 rounded-lg items-center w-1/3 self-center"
+                className="bg-tealAccent py-3 rounded-lg items-center w-full self-center"
             >
                 <Text className="text-white font-semibold">
                     {isSubmitting ? "Signing in..." : "Sign In"}
                 </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                className="mt-4 self-center"
+                onPress={() => router.push("/(auth)/ForgotPassword")}
+            >
+                <Text className="text-blue-500">Forgot Password?</Text>
             </TouchableOpacity>
         </View>
     );

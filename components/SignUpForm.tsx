@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Modal, ActivityIndicator } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,7 +8,6 @@ import { supabase } from "../lib/supabase";
 import Entypo from '@expo/vector-icons/Entypo';
 import { Ionicons } from "@expo/vector-icons";
 import AntDesign from '@expo/vector-icons/AntDesign';
-import {router} from "expo-router";
 
 const signUpSchema = z
     .object({
@@ -27,11 +26,7 @@ const signUpSchema = z
 type SignUpFormData = z.infer<typeof signUpSchema>;
 
 export default function SignUpForm() {
-    const {
-        control,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<SignUpFormData>({
+    const { control, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignUpFormData>({
         resolver: zodResolver(signUpSchema),
     });
 
@@ -39,12 +34,19 @@ export default function SignUpForm() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [formError, setFormError] = useState<string | null>(null);
 
+    // Modal state
+    const [modalVisible, setModalVisible] = useState(false);
+    const [resending, setResending] = useState(false);
+
+    const [emailForResend, setEmailForResend] = useState<string | null>(null);
+
     const onSubmit = async (data: SignUpFormData) => {
         setFormError(null);
         try {
-            const { error } = await supabase.auth.signUp({
+            const { data: userData, error } = await supabase.auth.signUp({
                 email: data.email,
                 password: data.password,
+                options: { emailRedirectTo: "exp://192.168.1.12:8081://layout" },
             });
 
             if (error) {
@@ -52,25 +54,47 @@ export default function SignUpForm() {
                 return;
             }
 
+            setEmailForResend(data.email);
+            setModalVisible(true);
+
             console.log("Signed up successfully!");
-            router.push("/(auth)/ConfirmEmail");
-        } catch (err) {
-            setFormError("Something went wrong. Try again later.");
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setFormError(err.message);
+            } else if (typeof err === "string") {
+                setFormError(err);
+            } else {
+                setFormError("An unexpected error occurred");
+            }
         }
+    };
+
+    const resendEmail = async () => {
+        if (!emailForResend) return;
+
+        setResending(true);
+
+        const { error } = await supabase.auth.resend({ type: "signup", email: emailForResend });
+
+        if (error) {
+            alert("Error resending email: " + error.message);
+            console.error(error);
+        } else {
+            alert("Confirmation email sent again! Check your inbox.");
+        }
+
+        setResending(false);
     };
 
     return (
         <View className="w-4/5 gap-7">
-            {formError && (
-                <Text className="text-red-500 text-center mb-2 text-lg">{formError}</Text>
-            )}
+            {formError && <Text className="text-red-500 text-center mb-2 text-lg">{formError}</Text>}
 
-            {/* Email Field */}
             <Controller
                 control={control}
                 name="email"
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View className="">
+                    <View>
                         <View className="flex-row items-center bg-white px-4 h-16 rounded-xl border border-gray-300">
                             <Entypo name="email" size={20} color="gray" />
                             <TextInput
@@ -81,29 +105,21 @@ export default function SignUpForm() {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                                 className="flex-1 ml-3 text-md text-black"
-                                placeholderTextColor="#9ca3af" // optional light gray placeholder
+                                placeholderTextColor="#9ca3af"
                             />
                         </View>
-
-                        {errors.email && (
-                            <Text className="text-red-500 mt-1 ml-1">{errors.email.message}</Text>
-                        )}
+                        {errors.email && <Text className="text-red-500 mt-1 ml-1">{errors.email.message}</Text>}
                     </View>
-
                 )}
             />
 
-            {/* Password Field */}
             <Controller
                 control={control}
                 name="password"
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View className="">
+                    <View>
                         <View className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
-                            {/* Lock Icon */}
                             <AntDesign name="lock" size={22} color="gray" />
-
-                            {/* Input Field */}
                             <TextInput
                                 placeholder="Password"
                                 value={value}
@@ -114,37 +130,22 @@ export default function SignUpForm() {
                                 className="flex-1 ml-3 text-md text-black"
                                 placeholderTextColor="#9ca3af"
                             />
-
-                            {/* Eye / Eye-off toggle */}
                             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                                <Ionicons
-                                    name={showPassword ? "eye-off" : "eye"}
-                                    size={22}
-                                    color="#555"
-                                />
+                                <Ionicons name={showPassword ? "eye-off" : "eye"} size={22} color="#555" />
                             </TouchableOpacity>
                         </View>
-
-                        {/* Validation error */}
-                        {errors.password && (
-                            <Text className="text-red-500 mt-1 ml-1">{errors.password.message}</Text>
-                        )}
+                        {errors.password && <Text className="text-red-500 mt-1 ml-1">{errors.password.message}</Text>}
                     </View>
-
                 )}
             />
 
-            {/* Confirm Password Field */}
             <Controller
                 control={control}
                 name="confirmPassword"
                 render={({ field: { onChange, onBlur, value } }) => (
-                    <View className="">
+                    <View>
                         <View className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
-                            {/* Lock Icon */}
                             <AntDesign name="lock" size={22} color="gray" />
-
-                            {/* Password Input */}
                             <TextInput
                                 placeholder="Confirm Password"
                                 value={value}
@@ -155,36 +156,52 @@ export default function SignUpForm() {
                                 className="flex-1 ml-3 text-md text-black"
                                 placeholderTextColor="#9ca3af"
                             />
-
-                            {/* Eye Icon */}
                             <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                                <Ionicons
-                                    name={showConfirmPassword ? "eye-off" : "eye"}
-                                    size={22}
-                                    color="#555"
-                                />
+                                <Ionicons name={showConfirmPassword ? "eye-off" : "eye"} size={22} color="#555" />
                             </TouchableOpacity>
                         </View>
-
-                        {/* Error Message */}
-                        {errors.confirmPassword && (
-                            <Text className="text-red-500 mt-1 ml-1">{errors.confirmPassword.message}</Text>
-                        )}
+                        {errors.confirmPassword && <Text className="text-red-500 mt-1 ml-1">{errors.confirmPassword.message}</Text>}
                     </View>
-
                 )}
             />
 
-            {/* Submit Button */}
             <TouchableOpacity
                 onPress={handleSubmit(onSubmit)}
                 disabled={isSubmitting}
                 className="bg-tealAccent py-3 rounded-lg items-center w-1/3 self-center"
             >
-                <Text className="text-white font-semibold">
-                    {isSubmitting ? "Signing up..." : "Sign Up"}
-                </Text>
+                <Text className="text-white font-semibold">{isSubmitting ? "Signing up..." : "Sign Up"}</Text>
             </TouchableOpacity>
+
+            <Modal visible={modalVisible} transparent animationType="fade">
+                <View className="flex-1 justify-center items-center bg-black/40 px-6">
+                    <View className="bg-white p-6 rounded-xl w-full max-w-xs">
+                        <Text className="text-lg font-bold mb-4 text-center">Confirm Your Email</Text>
+                        <Text className="text-center text-gray-700 mb-6">
+                            A confirmation email has been sent to {emailForResend}.{"\n"}Please check your inbox and click the link to verify your account.
+                        </Text>
+
+                        <TouchableOpacity
+                            onPress={resendEmail}
+                            disabled={resending}
+                            className="bg-gray-200 py-3 rounded-lg mb-3"
+                        >
+                            {resending ? (
+                                <ActivityIndicator color="#555" />
+                            ) : (
+                                <Text className="text-center text-gray-900 font-medium">Resend Confirmation Email</Text>
+                            )}
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            onPress={() => setModalVisible(false)}
+                            className="bg-tealAccent py-3 rounded-lg"
+                        >
+                            <Text className="text-center text-white font-semibold">OK</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }

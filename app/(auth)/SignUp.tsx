@@ -1,16 +1,18 @@
 import {View, Text, Image, Dimensions, StyleSheet, TouchableOpacity} from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { LinearGradient } from "expo-linear-gradient";
+import {SafeAreaView} from "react-native-safe-area-context";
+import {LinearGradient} from "expo-linear-gradient";
 
 import SignUpForm from "@/components/SignUpForm";
 import {router} from "expo-router";
 
-const { height } = Dimensions.get("window");
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
+const {height} = Dimensions.get("window");
 
 export default function SignUp() {
     return (
-        <SafeAreaView className="flex-1 bg-limeSoft" edges={["left", "right"]}>
+        <SafeAreaView className="flex-1 bg-greenSoft" edges={["left", "right"]}>
             {/* Top Image + Gradient */}
             <View style={styles.headerContainer}>
                 <Image
@@ -19,10 +21,10 @@ export default function SignUp() {
                     resizeMode="cover"
                 />
 
-                <View className="absolute w-full h-full bg-black/40" />
+                <View className="absolute w-full h-full bg-black/40"/>
 
                 <LinearGradient
-                    colors={["transparent", "#bce08a"]}
+                    colors={["transparent", "#93c572"]}
                     locations={[0, 0.6, 1]}
                     style={{
                         position: "absolute",
@@ -33,6 +35,7 @@ export default function SignUp() {
                     }}
                 />
 
+                <MaterialIcons onPress={() => router.replace("/")} className={"mt-7 ms-3 "} name="keyboard-arrow-left" size={55} color="white" />
 
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>Register</Text>
@@ -41,11 +44,11 @@ export default function SignUp() {
             </View>
 
             <View className="flex-1 px-6 pt-7 justify-around items-center">
-                <SignUpForm />
+                <SignUpForm/>
 
                 <TouchableOpacity className={"mb-10"} onPress={() => router.push("/SignIn")}>
                     <Text className="text-white">
-                        Already have an account? <Text className="text-tealAccent">Sign In</Text>
+                        Already have an account? <Text className="text-yellowAccent">Sign In</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         bottom: "30%",
         left: "50%",
-        transform: [{ translateX: "-50%" }, { translateY: "-30%" }],
+        transform: [{translateX: "-50%"}, {translateY: "-30%"}],
         zIndex: 10,
         alignItems: "center",
     },

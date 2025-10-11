@@ -6,12 +6,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import {router} from "expo-router";
 import SignInForm from "@/components/SignInForm";
 
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 const { height } = Dimensions.get("window");
 
 export default function SingIn() {
     return (
-        <SafeAreaView className="flex-1 bg-limeSoft" edges={["left", "right"]}>
-            {/* Top Image + Gradient */}
+        <SafeAreaView className="flex-1 bg-greenSoft" edges={["left", "right"]}>
             <View style={styles.headerContainer}>
                 <Image
                     source={require("../../assets/images/well-done-steak-homemade-potatoes.jpg")}
@@ -22,7 +23,7 @@ export default function SingIn() {
                 <View className="absolute w-full h-full bg-black/40" />
 
                 <LinearGradient
-                    colors={["transparent", "#bce08a"]}
+                    colors={["transparent", "#93c572"]}
                     locations={[0, 0.6, 1]}
                     style={{
                         position: "absolute",
@@ -33,6 +34,7 @@ export default function SingIn() {
                     }}
                 />
 
+                <MaterialIcons onPress={() => router.replace("/")} className={"mt-7 ms-3 "} name="keyboard-arrow-left" size={55} color="white" />
 
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>Welcome Back</Text>
@@ -44,7 +46,7 @@ export default function SingIn() {
 
                 <TouchableOpacity className={"mb-10"} onPress={() => router.push("/SignUp")}>
                     <Text className="text-white">
-                        Dont have an account? <Text className="text-tealAccent">Sign Up</Text>
+                        Dont have an account? <Text className="text-yellowAccent">Sign Up</Text>
                     </Text>
                 </TouchableOpacity>
             </View>

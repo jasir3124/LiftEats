@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(auth)/ConfirmEmail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/SignInForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/SignUpForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(auth)/ForgotPassword.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/ConfirmEmail.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignInForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignUpForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jasir3124/BrokeBites.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/jasir3124/LiftEats.git&quot;,
     &quot;accountId&quot;: &quot;8e26c7d6-e6ec-4389-bde5-94d63b4f2759&quot;
   }
 }</component>
@@ -63,6 +63,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\assets\images" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\app\(auth)" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -88,7 +91,9 @@
       <workItem from="1759413412486" duration="5267000" />
       <workItem from="1759600241944" duration="847000" />
       <workItem from="1759661537456" duration="8567000" />
-      <workItem from="1759845753546" duration="4639000" />
+      <workItem from="1759845753546" duration="5143000" />
+      <workItem from="1760021683240" duration="5064000" />
+      <workItem from="1760182276798" duration="9808000" />
     </task>
     <servers />
   </component>
