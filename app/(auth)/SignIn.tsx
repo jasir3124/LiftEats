@@ -34,7 +34,12 @@ export default function SingIn() {
                     }}
                 />
 
-                <MaterialIcons onPress={() => router.replace("/")} className={"mt-7 ms-3 "} name="keyboard-arrow-left" size={55} color="white" />
+                <TouchableOpacity
+                    onPress={() => router.replace("/")}
+                    className="mt-7 ms-3 self-start p-2 rounded-full"
+                >
+                    <MaterialIcons name="keyboard-arrow-left" size={55} color="white"/>
+                </TouchableOpacity>
 
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>Welcome Back</Text>
@@ -44,7 +49,7 @@ export default function SingIn() {
             <View className="flex-1 px-6 pt-7 justify-around items-center">
                 <SignInForm />
 
-                <TouchableOpacity className={"mb-10"} onPress={() => router.push("/SignUp")}>
+                <TouchableOpacity className={"mb-10"} onPress={() => router.push("/(auth)/SignUp")}>
                     <Text className="text-white">
                         Dont have an account? <Text className="text-yellowAccent">Sign Up</Text>
                     </Text>

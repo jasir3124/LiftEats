@@ -35,7 +35,13 @@ export default function SignUp() {
                     }}
                 />
 
-                <MaterialIcons onPress={() => router.replace("/")} className={"mt-7 ms-3 "} name="keyboard-arrow-left" size={55} color="white" />
+                <TouchableOpacity
+                    onPress={() => router.replace("/")}
+                    className="mt-7 ms-3 self-start p-2 rounded-full"
+                >
+                    <MaterialIcons name="keyboard-arrow-left" size={55} color="white"/>
+                </TouchableOpacity>
+
 
                 <View style={styles.textContainer}>
                     <Text style={styles.title}>Register</Text>
@@ -46,7 +52,7 @@ export default function SignUp() {
             <View className="flex-1 px-6 pt-7 justify-around items-center">
                 <SignUpForm/>
 
-                <TouchableOpacity className={"mb-10"} onPress={() => router.push("/SignIn")}>
+                <TouchableOpacity className={"mb-10"} onPress={() => router.push("/(auth)/SignIn")}>
                     <Text className="text-white">
                         Already have an account? <Text className="text-yellowAccent">Sign In</Text>
                     </Text>

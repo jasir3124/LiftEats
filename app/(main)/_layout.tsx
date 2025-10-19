@@ -1,3 +1,5 @@
+import React from "react";
+import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -6,10 +8,10 @@ export default function MainLayout() {
         <Tabs
             screenOptions={{
                 headerShown: false,
-                tabBarActiveTintColor: "#10b981", // Green color
-                tabBarInactiveTintColor: "#6b7280", // Gray color
+                tabBarActiveTintColor: "#10b981",
+                tabBarInactiveTintColor: "#6b7280",
                 tabBarStyle: {
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "#fff",
                     borderTopWidth: 1,
                     borderTopColor: "#e5e7eb",
                     height: 60,
@@ -22,48 +24,61 @@ export default function MainLayout() {
                 },
             }}
         >
+            {/* Left tab */}
             <Tabs.Screen
                 name="home"
                 options={{
                     title: "Home",
-                    tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home" color={color} size={size} />
-                    ),
+                    tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
                 }}
             />
 
-            {/* Uncomment when ready to add more tabs */}
-            {/*
-      <Tabs.Screen
-        name="meals"
-        options={{
-          title: "Meals",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="restaurant" color={color} size={size} />
-          ),
-        }}
-      />
+            {/* Middle “plus” button */}
+            <Tabs.Screen
+                name="generateMeal"
+                options={{
+                title: "",
+                tabBarIcon: () => null,
+                tabBarButton: (props) => (
+                    <TouchableOpacity
+                        {...props}
+                        style={[
+                            styles.middleButton,
+                            { left: '50%', marginLeft: -50 } // center horizontally
+                        ]}
+                    >
+                        <Ionicons name="add" size={50} color="white" />
+                    </TouchableOpacity>
+                ),
+            }}
+                />
 
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" color={color} size={size} />
-          ),
-        }}
-      />
 
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" color={color} size={size} />
-          ),
-        }}
-      />
-      */}
+                {/* Right tab */}
+            <Tabs.Screen
+                name="profile"
+                options={{
+                    title: "Profile",
+                    tabBarIcon: ({ color, size }) => <Ionicons name="person" color={color} size={size} />,
+                }}
+            />
         </Tabs>
     );
 }
+
+const styles = StyleSheet.create({
+    middleButton: {
+        top: -60, // float above the tab bar
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#10b981", // green
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        elevation: 10, // shadow for Android
+        shadowColor: "#000",
+        shadowOpacity: 0.3,
+        shadowOffset: { width: 0, height: 3 },
+        shadowRadius: 4,
+    },
+});

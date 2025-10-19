@@ -5,15 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(auth)/ForgotPassword.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(auth)/ResetPassword.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(main)/generateMeal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(main)/profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/Google__G__logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/ConfirmEmail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/ForgotPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/ForgotPassword.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignInForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignUpForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +103,14 @@
       <workItem from="1759661537456" duration="8567000" />
       <workItem from="1759845753546" duration="5143000" />
       <workItem from="1760021683240" duration="5064000" />
-      <workItem from="1760182276798" duration="9808000" />
+      <workItem from="1760182276798" duration="10202000" />
+      <workItem from="1760259030002" duration="738000" />
+      <workItem from="1760259787137" duration="3320000" />
+      <workItem from="1760279321907" duration="3611000" />
+      <workItem from="1760810750580" duration="618000" />
+      <workItem from="1760880135704" duration="3387000" />
+      <workItem from="1760883565684" duration="34000" />
+      <workItem from="1760883621671" duration="4099000" />
     </task>
     <servers />
   </component>

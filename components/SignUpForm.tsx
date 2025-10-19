@@ -46,8 +46,15 @@ export default function SignUpForm() {
             const { data: userData, error } = await supabase.auth.signUp({
                 email: data.email,
                 password: data.password,
-                options: { emailRedirectTo: "exp://192.168.1.12:8081://layout" },
+                options: { emailRedirectTo: "lifteats://layout" },
             });
+
+            if (!userData.user) {
+                setFormError(
+                    "An account with this email already exists. Please sign in instead."
+                );
+                return;
+            }
 
             if (error) {
                 setFormError(error.message);

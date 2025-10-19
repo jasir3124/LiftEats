@@ -1,9 +1,11 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { useRouter } from "expo-router";
+import {Image, Text, TouchableOpacity, View} from "react-native";
+import {LinearGradient} from "expo-linear-gradient";
+import {useRouter} from "expo-router";
 import * as WebBrowser from "expo-web-browser";
 import * as AuthSession from "expo-auth-session";
-import { supabase } from "../lib/supabase";
+import {supabase} from "../lib/supabase";
+
+import GoogleLogo from "../assets/images/Google__G__logo.svg";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -11,11 +13,11 @@ export default function Index() {
     const router = useRouter();
 
     async function signInWithGoogle() {
-        const redirectUrl = AuthSession.makeRedirectUri({ useProxy: true });
+        const redirectUrl = AuthSession.makeRedirectUri({useProxy: true});
 
-        const { data, error } = await supabase.auth.signInWithOAuth({
+        const {data, error} = await supabase.auth.signInWithOAuth({
             provider: "google",
-            options: { redirectTo: redirectUrl },
+            options: {redirectTo: redirectUrl},
         });
 
         if (error) {
@@ -38,7 +40,7 @@ export default function Index() {
                 const refresh_token = params.get("refresh_token");
 
                 if (access_token && refresh_token) {
-                    const { data: sessionData, error: sessionError } =
+                    const {data: sessionData, error: sessionError} =
                         await supabase.auth.setSession({
                             access_token,
                             refresh_token,
@@ -74,6 +76,14 @@ export default function Index() {
                         height: 300,
                     }}
                 />
+                <View className={"z-10 absolute top-1/4 left-1/2 -translate-x-1/2"}>
+                    {/*<Text*/}
+                    {/*    className={"text-5xl mb-2 font-semibold text-tealAccent text-center"}>Welcome </Text>*/}
+                    {/*<Text className={"text-6xl font-bold text-tealAccent text-center font-serif mb-4"}>Welcome</Text>*/}
+                    {/*<Text*/}
+                    {/*    className={"text-2xl font-semibold text-white text-center font-serif px-10"}>Simple,*/}
+                    {/*    balanced meals built around your goals.</Text>*/}
+                </View>
             </View>
 
             <View className="h-[50%] bg-greenSoft items-center justify-center p-4 pt-10">
@@ -87,21 +97,22 @@ export default function Index() {
                 </TouchableOpacity>
 
                 <View className="flex-row items-center justify-center w-full my-10">
-                    <View className="w-20 h-[1px] bg-white" />
+                    <View className="w-20 h-[1px] bg-white"/>
                     <Text className="mx-4 text-xl text-white">or use social sign up</Text>
-                    <View className="w-20 h-[1px] bg-white" />
+                    <View className="w-20 h-[1px] bg-white"/>
                 </View>
 
                 <TouchableOpacity
-                    className="bg-white p-4 mb-20 rounded-xl w-[90%] items-center"
+                    className="bg-white p-4 mb-20 rounded-xl w-[90%] items-center flex-row justify-center gap-4"
                     onPress={signInWithGoogle}
                 >
+                    <GoogleLogo/>
                     <Text className="text-black text-2xl font-semibold">
                         Continue with Google
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => router.push("/SignIn")}>
+                <TouchableOpacity className={"mb-5"} onPress={() => router.push("/SignIn")}>
                     <Text className="text-white">
                         Already have an account? <Text className="text-yellowAccent">Sign In</Text>
                     </Text>

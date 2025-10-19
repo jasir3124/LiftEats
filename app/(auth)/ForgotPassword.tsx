@@ -26,13 +26,16 @@ export default function ForgotPassword() {
         setLoading(true);
         setMessage(null);
 
+        // Supabase will send the reset email regardless of verification status
+        // This is the correct behavior - the reset link acts as email verification
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: "lifteats://reset",
+            redirectTo: "lifteats://ResetPassword",
         });
 
         if (error) {
             setMessage(error.message);
         } else {
+            // Success - email sent (whether verified or not)
             setModalVisible(true);
         }
 
@@ -45,13 +48,12 @@ export default function ForgotPassword() {
 
     return (
         <View className="flex-1 bg-white px-6">
-            <MaterialIcons
+            <TouchableOpacity
                 onPress={() => router.replace("/(auth)/SignIn")}
-                className="mt-10"
-                name="keyboard-arrow-left"
-                size={55}
-                color="black"
-            />
+                className="mt-7 relative -left-5 self-start p-2 rounded-full"
+            >
+                <MaterialIcons name="keyboard-arrow-left" size={55} color="black"/>
+            </TouchableOpacity>
 
             <View className="flex-1 items-center justify-center">
                 <Text className="text-3xl font-bold text-greenSoft mb-4">
@@ -92,7 +94,6 @@ export default function ForgotPassword() {
                 )}
             </View>
 
-            {/* ✅ Success Modal */}
             <Modal
                 visible={modalVisible}
                 transparent
@@ -105,7 +106,7 @@ export default function ForgotPassword() {
                             Email Sent!
                         </Text>
                         <Text className="text-gray-600 text-center mb-6">
-                            Check your inbox for the password reset link.
+                            Check your inbox for the password reset link. This will also verify your account.
                         </Text>
 
                         <TouchableOpacity
