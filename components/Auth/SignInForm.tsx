@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
     View,
     Text,
     TextInput,
     TouchableOpacity,
     ActivityIndicator,
-    Modal,
+    Modal
 } from "react-native";
-import { useForm, Controller } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "../lib/supabase";
+import {useForm, Controller} from "react-hook-form";
+import {z} from "zod";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {supabase} from "../../lib/supabase";
 import Entypo from "@expo/vector-icons/Entypo";
-import { Ionicons } from "@expo/vector-icons";
+import {Ionicons} from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { router } from "expo-router";
+import {router} from "expo-router";
 
 // Validation schema
 const signInSchema = z.object({
@@ -31,7 +31,7 @@ export default function SignInForm() {
     const {
         control,
         handleSubmit,
-        formState: { errors, isSubmitting },
+        formState: {errors, isSubmitting},
     } = useForm<SignInFormData>({
         resolver: zodResolver(signInSchema),
     });
@@ -45,7 +45,7 @@ export default function SignInForm() {
     const onSubmit = async (data: SignInFormData) => {
         setFormError(null);
         try {
-            const { error } = await supabase.auth.signInWithPassword({
+            const {error} = await supabase.auth.signInWithPassword({
                 email: data.email,
                 password: data.password,
             });
@@ -78,7 +78,7 @@ export default function SignInForm() {
     const resendEmail = async () => {
         if (!emailForResend) return;
         setResending(true);
-        const { error } = await supabase.auth.resend({
+        const {error} = await supabase.auth.resend({
             type: "signup",
             email: emailForResend,
         });
@@ -102,10 +102,11 @@ export default function SignInForm() {
             <Controller
                 control={control}
                 name="email"
-                render={({ field: { onChange, onBlur, value } }) => (
+                render={({field: {onChange, onBlur, value}}) => (
                     <View>
-                        <View className="flex-row items-center bg-white px-4 h-16 rounded-xl border border-gray-300">
-                            <Entypo name="email" size={20} color="gray" />
+                        <View
+                            className="flex-row items-center bg-white px-4 h-16 rounded-xl border border-gray-300">
+                            <Entypo name="email" size={20} color="gray"/>
                             <TextInput
                                 placeholder="Email"
                                 value={value}
@@ -131,10 +132,11 @@ export default function SignInForm() {
             <Controller
                 control={control}
                 name="password"
-                render={({ field: { onChange, onBlur, value } }) => (
+                render={({field: {onChange, onBlur, value}}) => (
                     <View>
-                        <View className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
-                            <AntDesign name="lock" size={22} color="gray" />
+                        <View
+                            className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
+                            <AntDesign name="lock" size={22} color="gray"/>
                             <TextInput
                                 placeholder="Password"
                                 value={value}
@@ -170,7 +172,7 @@ export default function SignInForm() {
                 className="bg-tealAccent py-3 rounded-lg items-center w-full self-center"
             >
                 {isSubmitting ? (
-                    <ActivityIndicator color="white" />
+                    <ActivityIndicator color="white"/>
                 ) : (
                     <Text className="text-white font-semibold text-lg">Sign In</Text>
                 )}
@@ -202,7 +204,7 @@ export default function SignInForm() {
                             className="bg-gray-200 py-3 rounded-lg mb-3"
                         >
                             {resending ? (
-                                <ActivityIndicator color="#555" />
+                                <ActivityIndicator color="#555"/>
                             ) : (
                                 <Text className="text-center text-gray-900 font-medium">
                                     Resend Confirmation Email

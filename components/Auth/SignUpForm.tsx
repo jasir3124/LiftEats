@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Modal, ActivityIndicator } fro
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../../lib/supabase";
 
 import Entypo from '@expo/vector-icons/Entypo';
 import { Ionicons } from "@expo/vector-icons";

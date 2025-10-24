@@ -53,19 +53,14 @@
 //     return <Stack screenOptions={{ headerShown: false }} />;
 // }
 
-
-
 import { useState, useEffect, useCallback } from "react";
 import { Linking, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import { router, Stack } from "expo-router";
 import { supabase } from "@/lib/supabase";
-
 import "../global.css";
 
-// Keep splash screen visible
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -74,34 +69,14 @@ export default function RootLayout() {
     useEffect(() => {
         async function prepare() {
             try {
-                // Load fonts
-                // await Font.loadAsync({
-                //     Inter: require("../assets/fonts/Inter-Regular.ttf"),
-                //     InterBold: require("../assets/fonts/Inter-Bold.ttf"),
-                // });
-
-                // Preload images
+                // 1️⃣ Preload assets
                 const images = [
                     require("../assets/images/food-board-onboard-page-2.jpg"),
                     require("../assets/images/well-done-steak-homemade-potatoes.jpg"),
-                    // require("../assets/images/Google__G__logo.svg"),
                 ];
-                const cacheImages = images.map((img) => Asset.fromModule(img).downloadAsync());
-                await Promise.all(cacheImages);
+                await Promise.all(images.map((img) => Asset.fromModule(img).downloadAsync()));
 
-                // Check Supabase session
-                const { data: { session } } = await supabase.auth.getSession();
-                if (session) {
-                    router.replace("/(main)/home");
-                }
-
-                // Listen for auth changes
-                supabase.auth.onAuthStateChange((event, session) => {
-                    if (event === "SIGNED_IN" && session) router.replace("/(main)/home");
-                    if (event === "SIGNED_OUT") router.replace("/");
-                });
-
-                // Handle deep links
+                // 2️⃣ Handle deep links
                 const handleLink = async (url: string | null) => {
                     if (!url) return;
                     const params = new URL(url).searchParams;
@@ -112,33 +87,47 @@ export default function RootLayout() {
                         if (!error) router.replace("/(main)/home");
                     }
                 };
-                const subscription = Linking.addEventListener("url", (event) => handleLink(event.url));
-                const initialUrl = await Linking.getInitialURL();
-                handleLink(initialUrl);
+                const sub = Linking.addEventListener("url", (event) => handleLink(event.url));
+                handleLink(await Linking.getInitialURL());
 
-                // Mark app ready
+                // 3️⃣ Mark ready BEFORE navigating
                 setAppReady(true);
 
-                // Clean up on unmount
-                return () => {
-                    subscription.remove();
-                };
+                return () => sub.remove();
             } catch (e) {
                 console.warn(e);
+                setAppReady(true); // ensure we still show UI even if something failed
             }
         }
 
         prepare();
+
+        // 4️⃣ Auth state listener (mounted once)
+        const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+            if (event === "SIGNED_IN" && session) router.replace("/(main)/home");
+            if (event === "SIGNED_OUT") router.replace("/");
+        });
+
+        return () => listener.subscription.unsubscribe();
     }, []);
 
-    // Hide splash once layout is ready
+    // 5️⃣ Hide splash screen once layout is ready
     const onLayoutRootView = useCallback(async () => {
-        if (appReady) await SplashScreen.hideAsync();
+        if (appReady) {
+            await SplashScreen.hideAsync();
+
+            // Now it’s safe to check session & navigate
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) router.replace("/(main)/home");
+            else router.replace("/");
+        }
     }, [appReady]);
 
-    if (!appReady) return null; // Keep splash screen visible
+    if (!appReady) return null;
 
-    return <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-        <Stack screenOptions={{ headerShown: false }} />
-    </View>;
+    return (
+        <View style={{ flex: 1, backgroundColor: "#fff" }} onLayout={onLayoutRootView}>
+            <Stack screenOptions={{ headerShown: false }} />
+        </View>
+    );
 }

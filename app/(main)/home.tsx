@@ -1,38 +1,21 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
-import { supabase } from "@/lib/supabase";
+import React, {useState} from "react";
+import {View, Text, TouchableOpacity, ActivityIndicator} from "react-native";
+import {supabase} from "@/lib/supabase";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 export default function Home() {
-    const [loading, setLoading] = useState(false);
-
-    const handleLogout = async () => {
-        try {
-            setLoading(true);
-            const { error } = await supabase.auth.signOut();
-            if (error) throw error;
-            // The layout.tsx listener will handle redirect automatically.
-        } catch (err) {
-            console.error("Logout error:", err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     return (
-        <View className="flex-1 justify-center items-center bg-white">
-            <Text className="text-2xl font-semibold mb-6">Home</Text>
+        <SafeAreaView style={{flex: 1, backgroundColor: "#fff"}} className="flex-1 bg-white">
+            <View className="flex-row justify-evenly items-center px-4 py-4">
+                <TouchableOpacity className="bg-gray-100 px-4 py-2 rounded-lg">
+                    <Text className="text-2xl font-semibold">Generated Meals</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                onPress={handleLogout}
-                disabled={loading}
-                className="bg-red-500 px-6 py-3 rounded-lg"
-            >
-                {loading ? (
-                    <ActivityIndicator color="#fff" />
-                ) : (
-                    <Text className="text-white font-semibold text-lg">Logout</Text>
-                )}
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity className="bg-gray-100 px-4 py-2 rounded-lg">
+                    <Text className="text-2xl font-semibold">Saved Meals</Text>
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>
     );
 }

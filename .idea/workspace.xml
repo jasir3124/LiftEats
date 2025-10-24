@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(auth)/ResetPassword.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(main)/generateMeal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(main)/profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/Google__G__logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Main/generateMeal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/ForgotPassword.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/ForgotPassword.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(main)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/generateMeal.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(main)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignInForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignUpForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignInForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -74,6 +68,8 @@
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\components\Main" />
+      <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\components\Auth" />
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\app\(auth)" />
     </key>
   </component>
@@ -110,7 +106,13 @@
       <workItem from="1760810750580" duration="618000" />
       <workItem from="1760880135704" duration="3387000" />
       <workItem from="1760883565684" duration="34000" />
-      <workItem from="1760883621671" duration="4099000" />
+      <workItem from="1760883621671" duration="4415000" />
+      <workItem from="1761060709272" duration="1185000" />
+      <workItem from="1761164465605" duration="1160000" />
+      <workItem from="1761208487699" duration="3934000" />
+      <workItem from="1761213741194" duration="695000" />
+      <workItem from="1761225797533" duration="5232000" />
+      <workItem from="1761317372193" duration="2917000" />
     </task>
     <servers />
   </component>
