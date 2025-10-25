@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Modal, ActivityIndicator } from "react-native";
-import { useForm, Controller } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "../../lib/supabase";
+import React, {useState} from "react";
+import {View, Text, TextInput, TouchableOpacity, Modal, ActivityIndicator} from "react-native";
+import {useForm, Controller} from "react-hook-form";
+import {z} from "zod";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {supabase} from "../../lib/supabase";
 
 import Entypo from '@expo/vector-icons/Entypo';
-import { Ionicons } from "@expo/vector-icons";
+import {Ionicons} from "@expo/vector-icons";
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 const signUpSchema = z
@@ -26,7 +26,7 @@ const signUpSchema = z
 type SignUpFormData = z.infer<typeof signUpSchema>;
 
 export default function SignUpForm() {
-    const { control, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignUpFormData>({
+    const {control, handleSubmit, formState: {errors, isSubmitting}} = useForm<SignUpFormData>({
         resolver: zodResolver(signUpSchema),
     });
 
@@ -43,10 +43,10 @@ export default function SignUpForm() {
     const onSubmit = async (data: SignUpFormData) => {
         setFormError(null);
         try {
-            const { data: userData, error } = await supabase.auth.signUp({
+            const {data: userData, error} = await supabase.auth.signUp({
                 email: data.email,
                 password: data.password,
-                options: { emailRedirectTo: "lifteats://layout" },
+                options: {emailRedirectTo: "lifteats://layout"},
             });
 
             if (!userData.user) {
@@ -81,7 +81,7 @@ export default function SignUpForm() {
 
         setResending(true);
 
-        const { error } = await supabase.auth.resend({ type: "signup", email: emailForResend });
+        const {error} = await supabase.auth.resend({type: "signup", email: emailForResend});
 
         if (error) {
             alert("Error resending email: " + error.message);
@@ -96,14 +96,13 @@ export default function SignUpForm() {
     return (
         <View className="w-4/5 gap-7">
             {formError && <Text className="text-red-500 text-center mb-2 text-lg">{formError}</Text>}
-
             <Controller
                 control={control}
                 name="email"
-                render={({ field: { onChange, onBlur, value } }) => (
+                render={({field: {onChange, onBlur, value}}) => (
                     <View>
                         <View className="flex-row items-center bg-white px-4 h-16 rounded-xl border border-gray-300">
-                            <Entypo name="email" size={20} color="gray" />
+                            <Entypo name="email" size={20} color="gray"/>
                             <TextInput
                                 placeholder="Email"
                                 value={value}
@@ -123,10 +122,11 @@ export default function SignUpForm() {
             <Controller
                 control={control}
                 name="password"
-                render={({ field: { onChange, onBlur, value } }) => (
+                render={({field: {onChange, onBlur, value}}) => (
                     <View>
-                        <View className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
-                            <AntDesign name="lock" size={22} color="gray" />
+                        <View
+                            className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
+                            <AntDesign name="lock" size={22} color="gray"/>
                             <TextInput
                                 placeholder="Password"
                                 value={value}
@@ -138,7 +138,7 @@ export default function SignUpForm() {
                                 placeholderTextColor="#9ca3af"
                             />
                             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                                <Ionicons name={showPassword ? "eye-off" : "eye"} size={22} color="#555" />
+                                <Ionicons name={showPassword ? "eye-off" : "eye"} size={22} color="#555"/>
                             </TouchableOpacity>
                         </View>
                         {errors.password && <Text className="text-red-500 mt-1 ml-1">{errors.password.message}</Text>}
@@ -149,10 +149,11 @@ export default function SignUpForm() {
             <Controller
                 control={control}
                 name="confirmPassword"
-                render={({ field: { onChange, onBlur, value } }) => (
+                render={({field: {onChange, onBlur, value}}) => (
                     <View>
-                        <View className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
-                            <AntDesign name="lock" size={22} color="gray" />
+                        <View
+                            className="flex-row items-center bg-white h-16 px-4 rounded-xl border border-gray-300 relative">
+                            <AntDesign name="lock" size={22} color="gray"/>
                             <TextInput
                                 placeholder="Confirm Password"
                                 value={value}
@@ -164,10 +165,11 @@ export default function SignUpForm() {
                                 placeholderTextColor="#9ca3af"
                             />
                             <TouchableOpacity onPress={() => setShowConfirmPassword(!showConfirmPassword)}>
-                                <Ionicons name={showConfirmPassword ? "eye-off" : "eye"} size={22} color="#555" />
+                                <Ionicons name={showConfirmPassword ? "eye-off" : "eye"} size={22} color="#555"/>
                             </TouchableOpacity>
                         </View>
-                        {errors.confirmPassword && <Text className="text-red-500 mt-1 ml-1">{errors.confirmPassword.message}</Text>}
+                        {errors.confirmPassword &&
+                            <Text className="text-red-500 mt-1 ml-1">{errors.confirmPassword.message}</Text>}
                     </View>
                 )}
             />
@@ -185,7 +187,8 @@ export default function SignUpForm() {
                     <View className="bg-white p-6 rounded-xl w-full max-w-xs">
                         <Text className="text-lg font-bold mb-4 text-center">Confirm Your Email</Text>
                         <Text className="text-center text-gray-700 mb-6">
-                            A confirmation email has been sent to {emailForResend}.{"\n"}Please check your inbox and click the link to verify your account.
+                            A confirmation email has been sent to {emailForResend}.{"\n"}Please check your inbox and
+                            click the link to verify your account.
                         </Text>
 
                         <TouchableOpacity
@@ -194,7 +197,7 @@ export default function SignUpForm() {
                             className="bg-gray-200 py-3 rounded-lg mb-3"
                         >
                             {resending ? (
-                                <ActivityIndicator color="#555" />
+                                <ActivityIndicator color="#555"/>
                             ) : (
                                 <Text className="text-center text-gray-900 font-medium">Resend Confirmation Email</Text>
                             )}

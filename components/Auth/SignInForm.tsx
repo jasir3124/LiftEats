@@ -169,7 +169,7 @@ export default function SignInForm() {
             <TouchableOpacity
                 onPress={handleSubmit(onSubmit)}
                 disabled={isSubmitting}
-                className="bg-tealAccent py-3 rounded-lg items-center w-full self-center"
+                className="bg-tealAccent py-3 rounded-lg items-center w-1/3 self-center"
             >
                 {isSubmitting ? (
                     <ActivityIndicator color="white"/>

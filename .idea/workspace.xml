@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Main/generateMeal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignIn.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(main)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(main)/generateMeal.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(main)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(main)/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignInForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Auth/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignInForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +104,10 @@
       <workItem from="1761208487699" duration="3934000" />
       <workItem from="1761213741194" duration="695000" />
       <workItem from="1761225797533" duration="5232000" />
-      <workItem from="1761317372193" duration="2917000" />
+      <workItem from="1761317372193" duration="3931000" />
+      <workItem from="1761332370196" duration="7000" />
+      <workItem from="1761389015514" duration="2081000" />
+      <workItem from="1761400570512" duration="758000" />
     </task>
     <servers />
   </component>

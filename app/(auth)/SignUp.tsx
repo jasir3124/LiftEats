@@ -69,7 +69,7 @@ export default function SignUp() {
                         </View>
                     </View>
 
-                    <View className="flex-1 px-6 pt-7 justify-around items-center">
+                    <View className="flex-1 px-6 pt-7 relative bottom-10 justify-around items-center">
                         <SignUpForm/>
 
                         <TouchableOpacity className={"mb-10"} onPress={() => router.push("/(auth)/SignIn")}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         position: "absolute",
-        bottom: "30%",
+        bottom: "40%",
         left: "50%",
         transform: [{translateX: "-50%"}, {translateY: "-30%"}],
         zIndex: 10,

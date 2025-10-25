@@ -1,64 +1,9 @@
-// import { useEffect } from "react";
-// import { Linking } from "react-native";
-// import { router, Stack } from "expo-router";
-// import { supabase } from "@/lib/supabase";
-//
-// import "../global.css";
-//
-// export default function RootLayout() {
-//     useEffect(() => {
-//         const handleLink = async (url: string | null) => {
-//             if (!url) return;
-//
-//             const params = new URL(url).searchParams;
-//             const token = params.get("token");
-//             const email = params.get("email");
-//
-//             if (token && email) {
-//                 // Optional: verify OTP if you still want Supabase to check
-//                 const { error } = await supabase.auth.verifyOtp({
-//                     email,
-//                     token,
-//                     type: "signup",
-//                 });
-//
-//                 if (!error) router.replace("/(main)/home");
-//             }
-//         };
-//
-//         const subscription = Linking.addEventListener("url", (event) => handleLink(event.url));
-//         Linking.getInitialURL().then((url) => handleLink(url));
-//
-//         supabase.auth.getSession().then(({ data: { session } }) => {
-//             if (session) {
-//                 router.replace("/home");
-//             }
-//         });
-//
-//         const authSub = supabase.auth.onAuthStateChange((event, session) => {
-//             if (event === "SIGNED_IN" && session) {
-//                 router.replace("/home");
-//             } else if (event === "SIGNED_OUT") {
-//                 router.replace("/");
-//             }
-//         });
-//
-//         // Clean up
-//         return () => {
-//             subscription.remove();
-//             authSub.data.subscription.unsubscribe();
-//         };
-//     }, []);
-//
-//     return <Stack screenOptions={{ headerShown: false }} />;
-// }
-
-import { useState, useEffect, useCallback } from "react";
-import { Linking, View } from "react-native";
+import {useState, useEffect, useCallback} from "react";
+import {Linking, View} from "react-native";
 import * as SplashScreen from "expo-splash-screen";
-import { Asset } from "expo-asset";
-import { router, Stack } from "expo-router";
-import { supabase } from "@/lib/supabase";
+import {Asset} from "expo-asset";
+import {router, Stack} from "expo-router";
+import {supabase} from "@/lib/supabase";
 import "../global.css";
 
 SplashScreen.preventAutoHideAsync();
@@ -83,7 +28,7 @@ export default function RootLayout() {
                     const token = params.get("token");
                     const email = params.get("email");
                     if (token && email) {
-                        const { error } = await supabase.auth.verifyOtp({ email, token, type: "signup" });
+                        const {error} = await supabase.auth.verifyOtp({email, token, type: "signup"});
                         if (!error) router.replace("/(main)/home");
                     }
                 };
@@ -103,7 +48,7 @@ export default function RootLayout() {
         prepare();
 
         // 4️⃣ Auth state listener (mounted once)
-        const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+        const {data: listener} = supabase.auth.onAuthStateChange((event, session) => {
             if (event === "SIGNED_IN" && session) router.replace("/(main)/home");
             if (event === "SIGNED_OUT") router.replace("/");
         });
@@ -117,7 +62,7 @@ export default function RootLayout() {
             await SplashScreen.hideAsync();
 
             // Now it’s safe to check session & navigate
-            const { data: { session } } = await supabase.auth.getSession();
+            const {data: {session}} = await supabase.auth.getSession();
             if (session) router.replace("/(main)/home");
             else router.replace("/");
         }
@@ -126,8 +71,8 @@ export default function RootLayout() {
     if (!appReady) return null;
 
     return (
-        <View style={{ flex: 1, backgroundColor: "#fff" }} onLayout={onLayoutRootView}>
-            <Stack screenOptions={{ headerShown: false }} />
+        <View style={{flex: 1, backgroundColor: "#fff"}} onLayout={onLayoutRootView}>
+            <Stack screenOptions={{headerShown: false}}/>
         </View>
     );
 }
