@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/SignUp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Auth/SignInForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignInForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" afterDir="false" />
     </list>
@@ -107,7 +105,7 @@
       <workItem from="1761317372193" duration="3931000" />
       <workItem from="1761332370196" duration="7000" />
       <workItem from="1761389015514" duration="2081000" />
-      <workItem from="1761400570512" duration="758000" />
+      <workItem from="1761400570512" duration="1735000" />
     </task>
     <servers />
   </component>

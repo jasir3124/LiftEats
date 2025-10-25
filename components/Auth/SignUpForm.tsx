@@ -81,7 +81,11 @@ export default function SignUpForm() {
 
         setResending(true);
 
-        const {error} = await supabase.auth.resend({type: "signup", email: emailForResend});
+        const {error} = await supabase.auth.resend({
+            type: "signup",
+            email: emailForResend,
+            options: {emailRedirectTo: "lifteats://layout"},
+        });
 
         if (error) {
             alert("Error resending email: " + error.message);

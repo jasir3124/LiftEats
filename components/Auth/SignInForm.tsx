@@ -58,6 +58,9 @@ export default function SignInForm() {
                     await supabase.auth.resend({
                         type: "signup",
                         email: data.email,
+                        options: {
+                            emailRedirectTo: "lifteats://layout",
+                        },
                     });
 
                     return;
@@ -81,6 +84,9 @@ export default function SignInForm() {
         const {error} = await supabase.auth.resend({
             type: "signup",
             email: emailForResend,
+            options: {
+                emailRedirectTo: "lifteats://layout",
+            },
         });
         if (error) {
             setFormError(error.message);
