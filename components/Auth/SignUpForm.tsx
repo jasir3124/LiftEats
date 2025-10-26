@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, Modal, ActivityIndicator} from 
 import {useForm, Controller} from "react-hook-form";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {supabase} from "../../lib/supabase";
+import {supabase} from "@/lib/supabase";
 
 import Entypo from '@expo/vector-icons/Entypo';
 import {Ionicons} from "@expo/vector-icons";
@@ -43,18 +43,32 @@ export default function SignUpForm() {
     const onSubmit = async (data: SignUpFormData) => {
         setFormError(null);
         try {
+
+            const { data: existingUser } = await supabase
+                .from("users")
+                .select("*")
+                .eq("email", data.email)
+                .maybeSingle();
+
+            if (existingUser) {
+                if(existingUser.email_confirmed == false) {
+                    setEmailForResend(data.email);
+                    await supabase.auth.resend({
+                        type: "signup",
+                        email: data.email,
+                        options: {emailRedirectTo: "lifteats://layout"},
+                    });
+                    setModalVisible(true);
+                }
+                setFormError("This email is already registered. Please log in instead.");
+                return;
+            }
+
             const {data: userData, error} = await supabase.auth.signUp({
                 email: data.email,
                 password: data.password,
                 options: {emailRedirectTo: "lifteats://layout"},
             });
-
-            if (!userData.user) {
-                setFormError(
-                    "An account with this email already exists. Please sign in instead."
-                );
-                return;
-            }
 
             if (error) {
                 setFormError(error.message);
@@ -63,6 +77,7 @@ export default function SignUpForm() {
 
             setEmailForResend(data.email);
             setModalVisible(true);
+
 
             console.log("Signed up successfully!");
         } catch (err: unknown) {
