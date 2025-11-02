@@ -59,7 +59,7 @@ export default function SignInForm() {
                         type: "signup",
                         email: data.email,
                         options: {
-                            emailRedirectTo: "lifteats://layout",
+                            emailRedirectTo: "macromunch://layout",
                         },
                     });
 
@@ -85,7 +85,7 @@ export default function SignInForm() {
             type: "signup",
             email: emailForResend,
             options: {
-                emailRedirectTo: "lifteats://layout",
+                emailRedirectTo: "macromunch://layout",
             },
         });
         if (error) {

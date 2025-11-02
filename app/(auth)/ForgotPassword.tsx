@@ -29,7 +29,7 @@ export default function ForgotPassword() {
         // Supabase will send the reset email regardless of verification status
         // This is the correct behavior - the reset link acts as email verification
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: "lifteats://ResetPassword",
+            redirectTo: "macromunch://ResetPassword",
         });
 
         if (error) {

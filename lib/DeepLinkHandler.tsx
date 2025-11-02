@@ -10,7 +10,7 @@ export function DeepLinkHandler() {
 
             try {
                 // Handle deep link authentication
-                if (url.includes("lifteats://")) {
+                if (url.includes("macromunch://")) {
                     console.log("Processing deep link:", url);
 
                     const { data, error } = await supabase.auth.exchangeCodeForSession(url);

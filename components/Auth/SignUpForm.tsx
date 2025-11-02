@@ -56,7 +56,7 @@ export default function SignUpForm() {
                     await supabase.auth.resend({
                         type: "signup",
                         email: data.email,
-                        options: {emailRedirectTo: "lifteats://layout"},
+                        options: {emailRedirectTo: "macromunch://layout"},
                     });
                     setModalVisible(true);
                 }
@@ -67,7 +67,7 @@ export default function SignUpForm() {
             const {data: userData, error} = await supabase.auth.signUp({
                 email: data.email,
                 password: data.password,
-                options: {emailRedirectTo: "lifteats://layout"},
+                options: {emailRedirectTo: "macromunch://layout"},
             });
 
             if (error) {
@@ -99,7 +99,7 @@ export default function SignUpForm() {
         const {error} = await supabase.auth.resend({
             type: "signup",
             email: emailForResend,
-            options: {emailRedirectTo: "lifteats://layout"},
+            options: {emailRedirectTo: "macromunch://layout"},
         });
 
         if (error) {
