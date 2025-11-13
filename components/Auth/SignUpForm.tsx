@@ -44,14 +44,22 @@ export default function SignUpForm() {
         setFormError(null);
         try {
 
-            const { data: existingUser } = await supabase
-                .from("users")
-                .select("*")
-                .eq("email", data.email)
-                .maybeSingle();
+            // const { data: existingUser } = await supabase
+            //     .from("users")
+            //     .select("*")
+            //     .eq("email", data.email)
+            //     .maybeSingle();
+            //
+
+            const { data: existingUser, error: existingUserError } = await supabase.functions.invoke('check-email-exists', {
+                body: { email: data.email }
+            });
+
+            console.log(existingUser);
+            console.log(existingUserError);
 
             if (existingUser) {
-                if(existingUser.email_confirmed == false) {
+                if(existingUser.confirmed == false) {
                     setEmailForResend(data.email);
                     await supabase.auth.resend({
                         type: "signup",
@@ -77,7 +85,6 @@ export default function SignUpForm() {
 
             setEmailForResend(data.email);
             setModalVisible(true);
-
 
             console.log("Signed up successfully!");
         } catch (err: unknown) {

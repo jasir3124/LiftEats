@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="" />
+    <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(main)/GeneratedMeals.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(main)/SavedMeals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +28,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jasir3124/LiftEats.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/jasir3124/MacroMunch.git&quot;,
     &quot;accountId&quot;: &quot;8e26c7d6-e6ec-4389-bde5-94d63b4f2759&quot;
   }
 }</component>
@@ -45,7 +52,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Documents\\programming\\projekete\\projects\\LiftEats\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -107,6 +114,11 @@
       <workItem from="1761570312172" duration="2023000" />
       <workItem from="1761665993094" duration="1712000" />
       <workItem from="1762081248135" duration="8415000" />
+      <workItem from="1762697889549" duration="362000" />
+      <workItem from="1762698273094" duration="1516000" />
+      <workItem from="1762714594450" duration="518000" />
+      <workItem from="1762715232506" duration="2944000" />
+      <workItem from="1763063339242" duration="3064000" />
     </task>
     <servers />
   </component>

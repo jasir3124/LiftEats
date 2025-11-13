@@ -2,13 +2,16 @@ import React, {useState} from "react";
 import {View, Text, TouchableOpacity, ActivityIndicator} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 
+import GeneratedMeals from "./GeneratedMeals"
+import SavedMeals from "./SavedMeals"
+
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
-import {supabase} from "@/lib/supabase";
 import {useUser} from "@/lib/UserContext";
 
 export default function Home() {
     const {user, loading} = useUser();
+    const [Page, setPage] = useState("generatedMeals");
 
     const isFree = user?.tier === "free";
     return (
@@ -48,6 +51,10 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
 
+            <View className="flex-1 px-10">
+                {Page === "generatedMeals" && <GeneratedMeals />}
+                {Page === "savedMeals" && <SavedMeals />}
+            </View>
         </SafeAreaView>
     );
 }
