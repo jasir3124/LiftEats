@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b6eda77-86dd-4071-92ac-34e048b4d0d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(main)/GeneratedMeals.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(main)/SavedMeals.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/GeneratedMeals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main/GeneratedMeals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/SavedMeals.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main/SavedMeals.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(main)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(main)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(main)/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Auth/SignUpForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main/generateMeal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main/generateMeal.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +61,7 @@
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\assets\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Documents\programming\projekete\projects\MacroMunch\components\Main" />
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\components\Main" />
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\components\Auth" />
       <recent name="C:\Users\Admin\Documents\programming\projekete\projects\LiftEats\app\(auth)" />
@@ -118,11 +119,48 @@
       <workItem from="1762698273094" duration="1516000" />
       <workItem from="1762714594450" duration="518000" />
       <workItem from="1762715232506" duration="2944000" />
-      <workItem from="1763063339242" duration="3064000" />
+      <workItem from="1763063339242" duration="3391000" />
+      <workItem from="1763144004174" duration="2537000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="a67c454b-0230-4c3e-ae88-e0db798ef544" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="a67c454b-0230-4c3e-ae88-e0db798ef544">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

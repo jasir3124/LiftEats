@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import {View, Text, TouchableOpacity, ActivityIndicator} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 
-import GeneratedMeals from "./GeneratedMeals"
-import SavedMeals from "./SavedMeals"
+import GeneratedMeals from "../../components/Main/GeneratedMeals"
+import SavedMeals from "../../components/Main/SavedMeals"
 
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
